@@ -1,0 +1,362 @@
+lisby-1
+On a slow day we were digging through our graveyard of long-forgotten computers.
+These were from an era when a computer still meant a massive construction with
+wires all over the place. And what did we find?! A LISBY DEVICE!
+The grumpy greybeards have spoken of such marvelous things! In the distant past,
+programmers of the old would use such special hardware optimized just for
+running programs made with the LISBY language.
+
+Alas, the hardware itself has long since been rendered inoperable by decades of
+neglect, but we were able to salvage the contents of some of the magnetic tapes,
+which seem to contain programs. Sadly, we have no time to figure out how they
+work, so perhaps you will help us to rediscover the old ways.
+
+Our search for documentation was mostly a failure, but we managed to find a one
+crucial part: A brief architecture guide!
+
+Our cursory investigation reveals that the LISBY DEVICE seems to contain a large
+variety of different op codes, but probably not all of are needed to understand
+or run the programs. Perhaps successfully decompiling the programs is a good
+start!
+
+README bin
+
+You get 150 points for this challenge.
+
+Solvers: 7
+
+reversing 2019
+--------------------------------------------------------------------------------
+mangled = 0a 36 9e d2 6c fa 18 52 0c 5a 5d 7b c0 17 a2 52 59 c9 82 0d 12 07 c6 d5 e4 8a f3 d4 3e 50 76 57 aa 0a 0a 0a 46 6c 61 67 3a 20 0a 60 de 94  32 c7 2d 2b 67 33 3b 17 da 77 fe 0f 2c a9 1e 58  7d 71 a6 a7 97 fb b3 a9 56 23 17 74 d4 0a 0a 0a
+flag = 0f 2c a9 1e 58  7d 71 a6 a7 97 fb b3 a9 56 23 17 74 d4 0a 0a 0a
+
+i start of by reading the provided architecture guide.
+then i tried to figure out what was what looking at the file in a hexeditor
+
+then i decided it was probably a good idea to make a disassembler.
+so i did.
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+L I S B Y   D E V I C E   :   A   D E C O M P I L A T I O N     T O O L
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+STRING TABLE
+-- entries:1
+┏──────────┯────────┯──────────┯────────────────────────────────────────────────┓
+│ offset   │ index  │ length   │ content                                        │
+┣══════════┿════════┿══════════┿════════════════════════════════════════════════┫
+│ 0x18     │ 0      │ 1        │ \n                                             │
+┗──────────┷────────┷──────────┷────────────────────────────────────────────────┛
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+SYMBOL TABLE
+-- entries:0
+--------------------------------------------------------------------------------
+ponter at offset:0x21   next 64-bit: 0100000000000000
+--------------------------------------------------------------------------------
+Amount of Tapes: 1
+--------------------------------------------------------------------------------
+length of first tape lenght:776 bytes
+offset: 0x31
+0x32      0a2000000000000000  PUSHI     , 0x20
+0x3b      0a6e00000000000000  PUSHI     , 0x6e
+0x44      02                  SUB
+0x45      26                  PRINT
+0x46      0c0000000000000000  PUSHSTR   , 0x0
+0x4f      26                  PRINT
+0x50      11                  PUSHUNIT
+0x51      0a2100000000000000  PUSHI     , 0x21
+0x5a      0a6a00000000000000  PUSHI     , 0x6a
+0x63      02                  SUB
+0x64      26                  PRINT
+0x65      0c0000000000000000  PUSHSTR   , 0x0
+0x6e      26                  PRINT
+0x6f      11                  PUSHUNIT
+0x70      0a2200000000000000  PUSHI     , 0x22
+0x79      0a7a00000000000000  PUSHI     , 0x7a
+0x82      02                  SUB
+0x83      26                  PRINT
+0x84      0c0000000000000000  PUSHSTR   , 0x0
+0x8d      26                  PRINT
+0x8e      11                  PUSHUNIT
+0x8f      0a2300000000000000  PUSHI     , 0x23
+0x98      0a7800000000000000  PUSHI     , 0x78
+0xa1      02                  SUB
+0xa2      26                  PRINT
+0xa3      0c0000000000000000  PUSHSTR   , 0x0
+0xac      26                  PRINT
+0xad      11                  PUSHUNIT
+0xae      0a2400000000000000  PUSHI     , 0x24
+0xb7      0a9f00000000000000  PUSHI     , 0x9f
+0xc0      02                  SUB
+0xc1      26                  PRINT
+0xc2      0c0000000000000000  PUSHSTR   , 0x0
+0xcb      26                  PRINT
+0xcc      11                  PUSHUNIT
+0xcd      0a2500000000000000  PUSHI     , 0x25
+0xd6      0a8800000000000000  PUSHI     , 0x88
+0xdf      02                  SUB
+0xe0      26                  PRINT
+0xe1      0c0000000000000000  PUSHSTR   , 0x0
+0xea      26                  PRINT
+0xeb      11                  PUSHUNIT
+0xec      0a2600000000000000  PUSHI     , 0x26
+0xf5      0a9800000000000000  PUSHI     , 0x98
+0xfe      02                  SUB
+0xff      26                  PRINT
+0x100     0c0000000000000000  PUSHSTR   , 0x0
+0x109     26                  PRINT
+0x10a     11                  PUSHUNIT
+0x10b     0a2700000000000000  PUSHI     , 0x27
+0x114     0a9000000000000000  PUSHI     , 0x90
+0x11d     02                  SUB
+0x11e     26                  PRINT
+0x11f     0c0000000000000000  PUSHSTR   , 0x0
+0x128     26                  PRINT
+0x129     11                  PUSHUNIT
+0x12a     0a2800000000000000  PUSHI     , 0x28
+0x133     0a9300000000000000  PUSHI     , 0x93
+0x13c     02                  SUB
+0x13d     26                  PRINT
+0x13e     0c0000000000000000  PUSHSTR   , 0x0
+0x147     26                  PRINT
+0x148     11                  PUSHUNIT
+0x149     0a2900000000000000  PUSHI     , 0x29
+0x152     0a8e00000000000000  PUSHI     , 0x8e
+0x15b     02                  SUB
+0x15c     26                  PRINT
+0x15d     0c0000000000000000  PUSHSTR   , 0x0
+0x166     26                  PRINT
+0x167     11                  PUSHUNIT
+0x168     0a2a00000000000000  PUSHI     , 0x2a
+0x171     0aa300000000000000  PUSHI     , 0xa3
+0x17a     02                  SUB
+0x17b     26                  PRINT
+0x17c     0c0000000000000000  PUSHSTR   , 0x0
+0x185     26                  PRINT
+0x186     11                  PUSHUNIT
+0x187     0a2b00000000000000  PUSHI     , 0x2b
+0x190     0a8a00000000000000  PUSHI     , 0x8a
+0x199     02                  SUB
+0x19a     26                  PRINT
+0x19b     0c0000000000000000  PUSHSTR   , 0x0
+0x1a4     26                  PRINT
+0x1a5     11                  PUSHUNIT
+0x1a6     0a2c00000000000000  PUSHI     , 0x2c
+0x1af     0aa000000000000000  PUSHI     , 0xa0
+0x1b8     02                  SUB
+0x1b9     26                  PRINT
+0x1ba     0c0000000000000000  PUSHSTR   , 0x0
+0x1c3     26                  PRINT
+0x1c4     11                  PUSHUNIT
+0x1c5     0a2d00000000000000  PUSHI     , 0x2d
+0x1ce     0a9500000000000000  PUSHI     , 0x95
+0x1d7     02                  SUB
+0x1d8     26                  PRINT
+0x1d9     0c0000000000000000  PUSHSTR   , 0x0
+0x1e2     26                  PRINT
+0x1e3     11                  PUSHUNIT
+0x1e4     0a2e00000000000000  PUSHI     , 0x2e
+0x1ed     0a8f00000000000000  PUSHI     , 0x8f
+0x1f6     02                  SUB
+0x1f7     26                  PRINT
+0x1f8     0c0000000000000000  PUSHSTR   , 0x0
+0x201     26                  PRINT
+0x202     11                  PUSHUNIT
+0x203     0a2f00000000000000  PUSHI     , 0x2f
+0x20c     0aa300000000000000  PUSHI     , 0xa3
+0x215     02                  SUB
+0x216     26                  PRINT
+0x217     0c0000000000000000  PUSHSTR   , 0x0
+0x220     26                  PRINT
+0x221     11                  PUSHUNIT
+0x222     0a3000000000000000  PUSHI     , 0x30
+0x22b     0a8f00000000000000  PUSHI     , 0x8f
+0x234     02                  SUB
+0x235     26                  PRINT
+0x236     0c0000000000000000  PUSHSTR   , 0x0
+0x23f     26                  PRINT
+0x240     11                  PUSHUNIT
+0x241     0a3100000000000000  PUSHI     , 0x31
+0x24a     0aa800000000000000  PUSHI     , 0xa8
+0x253     02                  SUB
+0x254     26                  PRINT
+0x255     0c0000000000000000  PUSHSTR   , 0x0
+0x25e     26                  PRINT
+0x25f     11                  PUSHUNIT
+0x260     0a3200000000000000  PUSHI     , 0x32
+0x269     0aa100000000000000  PUSHI     , 0xa1
+0x272     02                  SUB
+0x273     26                  PRINT
+0x274     0c0000000000000000  PUSHSTR   , 0x0
+0x27d     26                  PRINT
+0x27e     11                  PUSHUNIT
+0x27f     0a3300000000000000  PUSHI     , 0x33
+0x288     0aa500000000000000  PUSHI     , 0xa5
+0x291     02                  SUB
+0x292     26                  PRINT
+0x293     0c0000000000000000  PUSHSTR   , 0x0
+0x29c     26                  PRINT
+0x29d     11                  PUSHUNIT
+0x29e     0a3400000000000000  PUSHI     , 0x34
+0x2a7     0a9f00000000000000  PUSHI     , 0x9f
+0x2b0     02                  SUB
+0x2b1     26                  PRINT
+0x2b2     0c0000000000000000  PUSHSTR   , 0x0
+0x2bb     26                  PRINT
+0x2bc     11                  PUSHUNIT
+0x2bd     0a3500000000000000  PUSHI     , 0x35
+0x2c6     0a9a00000000000000  PUSHI     , 0x9a
+0x2cf     02                  SUB
+0x2d0     26                  PRINT
+0x2d1     0c0000000000000000  PUSHSTR   , 0x0
+0x2da     26                  PRINT
+0x2db     11                  PUSHUNIT
+0x2dc     0a3600000000000000  PUSHI     , 0x36
+0x2e5     0a9a00000000000000  PUSHI     , 0x9a
+0x2ee     02                  SUB
+0x2ef     26                  PRINT
+0x2f0     0c0000000000000000  PUSHSTR   , 0x0
+0x2f9     26                  PRINT
+0x2fa     11                  PUSHUNIT
+0x2fb     0a3700000000000000  PUSHI     , 0x37
+0x304     0a5800000000000000  PUSHI     , 0x58
+0x30d     02                  SUB
+0x30e     26                  PRINT
+0x30f     0c0000000000000000  PUSHSTR   , 0x0
+0x318     26                  PRINT
+0x319     11                  PUSHUNIT
+0x31a     0a3800000000000000  PUSHI     , 0x38
+0x323     0ab500000000000000  PUSHI     , 0xb5
+0x32c     02                  SUB
+0x32d     26                  PRINT
+0x32e     0c0000000000000000  PUSHSTR   , 0x0
+0x337     26                  PRINT
+0x338     11                  PUSHUNIT
+0x339     00                  HALT
+
+
+some manual python magic
+-----------------------------------------
+>>> chr(0x6e-0x20)
+'N'
+>>> chr(0x6a-0x21)
+'I'
+>>> chr(0x7a-0x22)
+'X'
+>>> chr(0x78-0x23)
+'U'
+>>> chr(0x9f-0x24)
+'{'
+>>> chr(0x88-0x25)
+'c'
+>>> chr(0x98-0x26)
+'r'
+>>> chr(0x90-0x27)
+'i'
+>>> chr(0x93-0x28)
+'k'
+>>> chr(0x8e-0x29)
+'e'
+>>> chr(0xa3-0x2a)
+'y'
+>>> chr(0x8a-0x2b)
+'_'
+>>> chr(0xa0-0x2c)
+'t'
+>>> chr(0x95-0x2d)
+'h'
+>>> chr(0x8f-0x2e)
+'a'
+>>> chr(0xa3-0x2f)
+'t'
+>>> chr(0x8f-0x30)
+'_'
+>>> chr(0xa8-0x31)
+'w'
+>>> chr(0xa1-0x32)
+'o'
+>>> chr(0xa5-0x33)
+'r'
+>>> chr(0x9f-0x34)
+'k'
+>>> chr(0x9a-0x35)
+'e'
+>>> chr(0x9a-0x36)
+'d'
+>>> chr(0x58-0x37)
+'!'
+>>> chr(0xb5-0x38)
+'}'
+>>>
+---------------------------------
+NIXU{crikey_that_worked!}
+-------------===========-------------=-
+
+
+Ok now for the second flag..
+i looked at the disassembly and i could not follow all that was going on..
+
+i see that incrementing values corresponding with printable characters in
+the backwards-compatible-with-ascii range of utf-8
+are being pushed on the stack and then popped into a list
+
+and later on there are some more values juggled about.
+lets see if they represent something useful..
+
+prints out a lot of garbage..
+since the dictonary list had the characters in the same order as the ascii table
+i decided to make a little script to see if i can just 'shift' them in the right place
+----====---=-=-=-=------------------------
+
+l=[47,42,57,54,92,87,70,83,90,64,84,85,83,80,79,72,77,90,64,80,67,71,86,84,68,66,85,70,69,64,85,74,84,64,88,66,84,94]
+for i in range(0,255):
+    str=''
+    for c in l:
+        x=c+i
+        if x > 255:
+            x-=255
+        str += chr(x)
+    if "NIXU" in str:
+        print str
+
+=---------------==========--------==-------
+NIXU{very_strongly_obfuscated_tis_was}
+
+===---------------------===========---------
+Error: bad answer
+
+NIXU{very_strongly_obfuscated_tis_was}
+????
+??
+
+NIXU{tis_was_very_strongly_obfuscated}
+Error: bad answer
+
+NIXU{this_was_very_strongly_obfuscated}
+????? ??? ?
+==-=-=-==--
+
+wtf back to the drawing board()
+
+==-==-=-=------
+there must be something strange going on..
+(later on i realized that because of a highlighting error
+in my disassembler i just overlooked charcters)
+===---=---=------
+
+
+i decide to make a emulator for the libsy machine.
+
+
+emulator is still not running correctly or at least not printing any flags.
+but i dumped some varables
+and rand them trough the 'flag finder'(TM) script above.
+
+[47, 42, 57, 54, 92, 87, 70, 83, 90, 64, 84, 85, 83, 80, 79, 72, 77, 90, 64, 80, 67, 71, 86, 84, 68, 66, 85, 70, 69, 64, 85, 73, 74, 84, 64, 88, 66, 84, 2, 2, 94]
+
+
+
+
+zipped [170, 212, 87, 116, 118, 23, 80, 35, 62, 86, 212, 169, 243, 179, 138, 251, 228, 151, 213, 167, 198, 166, 7, 113, 18, 125, 13, 88, 130, 30, 201, 169, 89, 44, 82, 15, 162, 254, 23, 119, 192, 218, 123, 23, 93, 59, 90, 51, 12, 103, 82, 43, 24, 45, 250, 199, 108, 50, 210, 148, 158, 222, 54, 96]
